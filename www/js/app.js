@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic'])
+var app = angular.module('starter', ['ionic', 'ionic.native'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,14 +23,9 @@ var app = angular.module('starter', ['ionic'])
   });
 })
 
-.controller('SampleController', function(){
-
-  // Wait for on device ready. We can use $ionicPlatform.ready() instead if we are working with Ionic 1
-  document.addEventListener('ondeviceready', function(){
-
-    // Call the method through the IonicNative variable which is exported from ionic.native.js or ionic.native.min.js
-    IonicNative.AppRate.promptForRating();
-
+.controller('SampleController', function($ionicPlatform, $cordovaAppRate){
+  $ionicPlatform.ready(function(){
+    console.log($cordovaAppRate);
   });
 
 });
